@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ProductCard from "../components/ProductCard";
 
 export default function Homepage() {
   const [productList, setProductList] = useState([]);
@@ -16,8 +17,9 @@ export default function Homepage() {
   }, []);
   return (
     <div>
-      Homepage
-      <h2>{productList.length > 0 && productList[0].title}</h2>
+      {productList.length!==0 && productList.map((product)=>{
+        return <ProductCard product={product}/>
+      })}
     </div>
   );
 }
