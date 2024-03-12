@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const { Product } = require("./models/product");
 const app = express();
 app.use(express.json());
-const port = 3000;
+const port = 3001;
 
 dotenv.config();
 
