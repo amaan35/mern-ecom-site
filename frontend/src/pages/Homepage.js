@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
+import NavBar from "../components/Navbar";
 
 export default function Homepage() {
   const [productList, setProductList] = useState([]);
@@ -16,10 +17,12 @@ export default function Homepage() {
     getProducts();
   }, []);
   return (
-    <div>
-      {productList.length!==0 && productList.map((product)=>{
-        return <ProductCard product={product}/>
-      })}
-    </div>
+    <>
+      <NavBar />
+      {productList.length !== 0 &&
+        productList.map((product) => {
+          return <ProductCard fetchProducts={getProducts} key={product._id} product={product} />;
+        })}
+    </>
   );
 }
