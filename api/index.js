@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const productRouter = require("./routes/product.route")
+const authRouter = require("./routes/auth.route")
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
   res.send("Hello world");
 });
 
+app.use("/auth", authRouter);
 app.use("/product", productRouter);
 
 app.listen(port, () => {
