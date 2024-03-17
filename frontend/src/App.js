@@ -1,14 +1,17 @@
-import {BrowserRouter,Routes, Route} from 'react-router-dom'
-import Homepage from './pages/Homepage';
-import AddProductPage from './pages/AddProductPage';
-import UpdateProductPage from './pages/UpdateProductPage';
+import react from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import SignUp from "./pages/SignUp";
+import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
-        <Route path='/' element={<Homepage/>}/>
-        <Route path='/addProduct' element={<AddProductPage/>}/>
-        <Route path='/updateProduct/:id' element={<UpdateProductPage/>}/>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
