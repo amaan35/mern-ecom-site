@@ -20,23 +20,28 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
+  if(!req.decodedUser.isAdmin){
+    return res.status(401).json("You are not authorized to create a product");
+  }
+  const { title, category, brand, price, stock, images } = req.body;
+  if (!title || !category || !brand || !price || !stock || !images) {
+    return res.status(400).json("All fields are required");
+  }
+  const slug = title.toLowerCase().split(" ").join("-").replace(/[^a-zA-Z0-9-]/g, "");
   try {
     const newProduct = new Product({
-      title: req.body.title,
-      description: req.body.description,
-      price: req.body.price,
-      discountPercentage: req.body.discountPercentage,
-      rating: req.body.rating,
-      stock: req.body.stock,
-      brand: req.body.brand,
-      category: req.body.category,
-      thumbnail: req.body.thumbnail,
-      images: req.body.images,
+      title,
+      category,
+      brand,
+      price,
+      stock,
+      slug,
+      images
     });
-    await Product.create(newProduct);
-    res.status(200).json("Product added to the database");
+    const savedProduct = await newProduct.save();
+    return res.status(200).json(savedProduct);
   } catch (error) {
-    console.log(error.message);
+    return res.json(error.message);
   }
 };
 

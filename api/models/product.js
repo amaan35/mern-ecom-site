@@ -5,7 +5,11 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  description: {
+  category: {
+    type: String,
+    required: true,
+  },
+  brand: {
     type: String,
     required: true,
   },
@@ -13,34 +17,16 @@ const productSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  discountPercentage: {
-    type: Number,
-    required: true,
-  },
-  rating: {
-    type: Number,
-    required: true,
-  },
   stock: {
     type: Number,
     required: true,
   },
-  brand: {
+  slug: {
     type: String,
     required: true,
+    unique: true,
   },
-  category: {
-    type: String,
-    required: true,
-  },
-  thumbnail: {
-    type: String,
-    required: true,
-  },
-  images: {
-    type: String,
-    required: true,
-  },
+  images: [String],
 });
 
 const Product = mongoose.model("Product", productSchema);
