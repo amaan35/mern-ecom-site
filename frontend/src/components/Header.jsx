@@ -14,7 +14,7 @@ export default function Header() {
     setProfileMenu(false);
   },[location.pathname])
   return (
-    <div className="w-full sticky top-0 z-[1] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-800 sm:min-h-[10vh] h-[7vh] text-cyan-300">
+    <div className="w-full sticky top-0 z-[1] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-600 sm:min-h-[10vh] h-[7vh] text-gray-200">
       <div
         className="sm:text-4xl text-xl cursor-pointer w-[33%]"
         onClick={() => navigate("/")}
