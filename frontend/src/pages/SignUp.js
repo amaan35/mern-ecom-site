@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import ecomshoppic from "../assets/ecomshoppic.webp";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signedUp } from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
 export default function SignUp() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formdata, setformdata] = useState({});
   const [showError, setShowError] = useState(null);
@@ -38,6 +42,7 @@ export default function SignUp() {
       } else {
         setLoading(false);
         setShowError(null);
+        dispatch(signedUp(data));
         navigate("/");
       }
     } catch (error) {
@@ -63,7 +68,7 @@ export default function SignUp() {
           </span>
         </p>
         <form
-          className="flex flex-col bg-slate-300 w-[90%] lg:w-[90%] md:w-[70%] border shadow-lg gap-5 p-6"
+          className="flex flex-col bg-gray-100 w-[90%] lg:w-[90%] md:w-[70%] border shadow-lg gap-5 p-6"
           onSubmit={handleSubmit}
         >
           <label>Enter your email : </label>
@@ -99,6 +104,7 @@ export default function SignUp() {
           >
             {loading ? "Loading..." : "Sign up"}
           </button>
+          <OAuth/>
           {showError && (
             <span className="text-red-500 text-center">{showError}</span>
           )}

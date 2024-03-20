@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import ecomsigninpic from "../assets/ecomsigninpic.jpg";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signedIn } from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formdata, setformdata] = useState({});
   const [showError, setShowError] = useState(null);
@@ -23,7 +27,7 @@ export default function SignIn() {
     try {
       setLoading(true);
       setShowError(null);
-      const res = await fetch("http://localhost:3001/auth/signin", {
+      const res = await fetch("/auth/signin", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -36,6 +40,7 @@ export default function SignIn() {
       } else {
         setLoading(false);
         setShowError(null);
+        dispatch(signedIn(data));
         navigate("/");
       }
     } catch (error) {
@@ -61,7 +66,7 @@ export default function SignIn() {
           </span>
         </p>
         <form
-          className="flex flex-col border shadow-md gap-5 p-5"
+          className="flex flex-col bg-gray-100 border shadow-md gap-5 p-5"
           onSubmit={handleSubmit}
         >
           <div className="flex justify-between items-center">
@@ -93,6 +98,7 @@ export default function SignIn() {
           >
             {loading ? "Loading..." : "Sign in"}
           </button>
+          <OAuth/>
           {showError && (
             <span className="text-red-500 text-center">{showError}</span>
           )}
