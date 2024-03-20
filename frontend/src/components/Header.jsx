@@ -1,12 +1,20 @@
-import React from "react";
-import defaultprofilepic from "../assets/defaultprofilepic.jpg";
+import React, { useEffect, useState } from "react";
 import searchIcon from "../assets/searchIcon.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signOut } from "../redux/user/userSlice";
 
 export default function Header() {
+  const location = useLocation();
+  const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const [showProfileMenu, setProfileMenu] = useState(false);
   const navigate = useNavigate();
+  useEffect(()=>{
+    setProfileMenu(false);
+  },[location.pathname])
   return (
-    <div className="w-full sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-800 sm:min-h-[10vh] h-[7vh] text-cyan-300">
+    <div className="w-full sticky top-0 z-[1] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-800 sm:min-h-[10vh] h-[7vh] text-cyan-300">
       <div
         className="sm:text-4xl text-xl cursor-pointer w-[33%]"
         onClick={() => navigate("/")}
@@ -20,18 +28,48 @@ export default function Header() {
       <div className="w-[33%] flex">
         <input
           placeholder="search..."
-          className="p-2 w-full sm:inline hidden rounded-tl-lg rounded-bl-lg"
+          className="p-2 w-full text-black sm:inline hidden rounded-tl-lg rounded-bl-lg"
         />
         <button className="px-3 hover:bg-blue-500 bg-blue-400 sm:inline hidden rounded-tr-lg rounded-br-lg text-black">
           search
         </button>
       </div>
       <div className="sm:w-[33%] flex justify-end">
-        {false ? (
-          <img
-            className="rounded-full w-[5vh] h-[5vh]"
-            src={defaultprofilepic}
-          />
+        {currentUser ? (
+          <div>
+            <img
+              className="rounded-full cursor-pointer w-[5vh] h-[5vh]"
+              src={currentUser.profilePic}
+              onClick={() => setProfileMenu(!showProfileMenu)}
+            />
+            <div
+              className={`absolute flex flex-col gap-3 cursor-pointer px-2 py-3 border-2 bg-white text-black rounded-md right-0 ${
+                showProfileMenu ? "" : "hidden"
+              }`}
+            >
+              <div>
+                <div className="font-semibold text-sm">
+                  @{currentUser.username}
+                </div>
+                <div className="text-xs">{currentUser.email}</div>
+              </div>
+              <div
+                onClick={() => navigate("/profile")}
+                className="border-b-2 text-lg hover:bg-gray-200 rounded-md"
+              >
+                profile
+              </div>
+              <div
+                onClick={() => {
+                  dispatch(signOut());
+                  navigate("/signin");
+                }}
+                className="hover:bg-gray-200 text-lg rounded-md"
+              >
+                sign out
+              </div>
+            </div>
+          </div>
         ) : (
           <button
             className="bg-gray-700 hover:bg-gray-600 px-4 sm:py-2 py-1 cursor-pointer rounded-sm text-nowrap"
