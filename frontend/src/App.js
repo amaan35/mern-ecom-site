@@ -9,6 +9,7 @@ import AuthUserRoute from "./components/AuthUserRoute";
 import AddProduct from "./pages/AddProduct";
 import AdminUserRoute from "./components/AdminUserRoute";
 import ProductDetails from "./pages/ProductDetails";
+import UpdateProduct from "./pages/UpdateProduct";
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
         </Route>
         <Route element={<AdminUserRoute />}>
           <Route path="/addproduct" element={<AddProduct />} />
+          <Route path="/updateproduct" element={<UpdateProduct />} />
         </Route>
       </Routes>
     </BrowserRouter>

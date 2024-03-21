@@ -145,7 +145,7 @@ const AddProduct = () => {
               className="border border-black rounded-tr-lg rounded-br-lg"
               type="file"
               id="images"
-              accept="image/png, image/webp, image/jpeg"
+              accept="image/png, image/webp, image/jpeg, image/avif"
               multiple
             />
           </div>

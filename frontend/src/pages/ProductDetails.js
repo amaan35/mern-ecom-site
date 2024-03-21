@@ -6,13 +6,49 @@ const ProductDetails = () => {
   return (
     <div className="md:px-[30px] px-5 md:py-[13px] py-2">
       <section className="justify-center md:flex">
-        <div className="grid grid-cols-2 gap-1 md:w-[45%] lg:w-[35%]">
-          <img src={currentProduct.images[0]} width={250} className="w-full" />
-          <img src={currentProduct.images[1]} width={250} className="w-full" />
-          <img src={currentProduct.images[2]} width={250} className="w-full" />
-          <img src={currentProduct.images[3]} width={250} className="w-full" />
+        <div className="grid grid-cols-2 gap-1 md:w-[45%] lg:w-[30%]">
+          <img
+            src={
+              currentProduct.images &&
+              currentProduct.images.length !== 0 &&
+              currentProduct.images[0]
+            }
+            width={250}
+            alt="image not available"
+            className="w-full object-cover"
+          />
+          <img
+            src={
+              currentProduct.images &&
+              currentProduct.images.length !== 0 &&
+              currentProduct.images[1]
+            }
+            width={250}
+            alt="image not available"
+            className="w-full object-cover"
+          />
+          <img
+            src={
+              currentProduct.images &&
+              currentProduct.images.length !== 0 &&
+              currentProduct.images[2]
+            }
+            width={250}
+            alt="image not available"
+            className="w-full object-cover"
+          />
+          <img
+            src={
+              currentProduct.images &&
+              currentProduct.images.length !== 0 &&
+              currentProduct.images[3]
+            }
+            width={250}
+            alt="image not available"
+            className="w-full object-cover"
+          />
         </div>
-        <div className="md:px-5 py-5 flex flex-col gap-3">
+        <div className="md:px-5 py-5 md:py-0 flex flex-col md:w-[40%] gap-3">
           <h2 className="font-semibold text-3xl">{currentProduct.title}</h2>
           <p className="text-xl font-serif">Brand : {currentProduct.brand}</p>
           <p className="text-lg">Category : {currentProduct.category}</p>

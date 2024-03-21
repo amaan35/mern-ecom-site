@@ -69,7 +69,7 @@ export default function Header() {
           </div>
         ) : (
           <button
-            className="bg-gray-700 hover:bg-gray-600 px-4 sm:py-2 py-1 cursor-pointer rounded-sm text-nowrap"
+            className="bg-gray-700 hover:bg-gray-800 px-4 sm:py-2 py-1 cursor-pointer rounded-sm text-nowrap"
             onClick={() => navigate("/signin")}
           >
             Sign In
