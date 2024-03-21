@@ -20,14 +20,18 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  if(!req.decodedUser.isAdmin){
+  if (!req.decodedUser.isAdmin) {
     return res.status(401).json("You are not authorized to create a product");
   }
   const { title, category, brand, price, stock, images } = req.body;
   if (!title || !category || !brand || !price || !stock || !images) {
     return res.status(400).json("All fields are required");
   }
-  const slug = title.toLowerCase().split(" ").join("-").replace(/[^a-zA-Z0-9-]/g, "");
+  const slug = title
+    .toLowerCase()
+    .split(" ")
+    .join("-")
+    .replace(/[^a-zA-Z0-9-]/g, "");
   try {
     const newProduct = new Product({
       title,
@@ -36,7 +40,7 @@ const createProduct = async (req, res) => {
       price,
       stock,
       slug,
-      images
+      images,
     });
     const savedProduct = await newProduct.save();
     return res.status(200).json(savedProduct);
@@ -46,21 +50,31 @@ const createProduct = async (req, res) => {
 };
 
 const updateProduct = async (req, res) => {
+  console.log(res);
+  if (!req.decodedUser.isAdmin) {
+    return res.status(401).json("You are not authorized to create a product");
+  }
+  const { title, category, brand, price, stock, images } = req.body;
+  if (!title || !category || !brand || !price || !stock || !images) {
+    return res.status(400).json("All fields are required");
+  }
+  const slug = title
+    .toLowerCase()
+    .split(" ")
+    .join("-")
+    .replace(/[^a-zA-Z0-9-]/g, "");
   try {
     const product_id = req.params.id;
-    await Product.findByIdAndUpdate(product_id, {
-      title: req.body.title,
-      description: req.body.description,
-      price: req.body.price,
-      discountPercentage: req.body.discountPercentage,
-      rating: req.body.rating,
-      stock: req.body.stock,
-      brand: req.body.brand,
-      category: req.body.category,
-      thumbnail: req.body.thumbnail,
-      images: req.body.images,
+    const updatedProduct = await Product.findByIdAndUpdate(product_id, {
+      title,
+      category,
+      brand,
+      price,
+      stock,
+      slug,
+      images,
     });
-    res.status(200).json("Product has been updated");
+    res.status(200).json(updatedProduct);
   } catch (error) {
     console.log(error.message);
   }
