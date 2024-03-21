@@ -10,31 +10,28 @@ export default function Header() {
   const dispatch = useDispatch();
   const [showProfileMenu, setProfileMenu] = useState(false);
   const navigate = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     setProfileMenu(false);
-  },[location.pathname])
+  }, [location.pathname]);
   return (
     <div className="w-full sticky top-0 z-[1] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-600 sm:min-h-[10vh] h-[7vh] text-gray-200">
-      <div
-        className="sm:text-4xl text-xl cursor-pointer w-[33%]"
-        onClick={() => navigate("/")}
-      >
-        Ecommerce
+      <div className="sm:text-4xl text-xl cursor-pointer w-fit">
+        <h1 onClick={() => navigate("/")}>Ecommerce</h1>
       </div>
-      <button className="sm:hidden hover:bg-blue-400 bg-blue-300 px-3 py-1 rounded-md flex items-center text-black gap-1">
+      <button className="sm:hidden hover:bg-gray-300 font-semibold bg-gray-200 px-3 py-1 rounded-md flex items-center text-black gap-1">
         <img src={searchIcon} className="w-[3vw]" />
         search
       </button>
-      <div className="w-[33%] flex">
+      <div className="justify-end w-[33%] flex">
         <input
           placeholder="search..."
           className="p-2 w-full text-black sm:inline hidden rounded-tl-lg rounded-bl-lg"
         />
-        <button className="px-3 hover:bg-blue-500 bg-blue-400 sm:inline hidden rounded-tr-lg rounded-br-lg text-black">
+        <button className="px-3 hover:bg-gray-800 bg-black sm:inline hidden rounded-tr-lg rounded-br-lg text-white">
           search
         </button>
       </div>
-      <div className="sm:w-[33%] flex justify-end">
+      <div className="flex justify-end">
         {currentUser ? (
           <div>
             <img
