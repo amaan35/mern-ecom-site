@@ -1,12 +1,19 @@
 import React from "react";
 import productdefaultpic from "../assets/productdefaultpic.jpeg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { clickedProduct } from "../redux/product/productSlice";
 const ProductCard = ({ productInfo }) => {
   const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div
-      key={productInfo._id}
       className="flex flex-col gap-3 lg:w-[23%] md:w-[30%] w-[40%] p-5 border-2 rounded-lg hover:shadow-xl md:hover:scale-105 cursor-pointer transition-all"
+      onClick={() => {
+        dispatch(clickedProduct(productInfo));
+        navigate(`/${productInfo.slug}`);
+      }}
     >
       <img src={productInfo.images[0] || productdefaultpic} />
       <p className="font-semibold overflow-hidden overflow-ellipsis">

@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import AuthUserRoute from "./components/AuthUserRoute";
 import AddProduct from "./pages/AddProduct";
 import AdminUserRoute from "./components/AdminUserRoute";
+import ProductDetails from "./pages/ProductDetails";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/" element={<Home />} />
+        <Route path="/:slug" element={<ProductDetails />} />
         <Route element={<AuthUserRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
