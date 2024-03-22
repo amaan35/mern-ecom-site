@@ -3,7 +3,6 @@ import ProductCard from "../components/ProductCard";
 
 const Home = () => {
   const [productList, setProductList] = useState(null);
-  console.log(productList);
   useEffect(() => {
     const fetchProducts = async () => {
       try {

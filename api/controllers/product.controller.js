@@ -9,15 +9,16 @@ const getAllProducts = async (req, res) => {
   }
 };
 
-const getProductById = async (req, res) => {
-  try {
-    const product_id = req.params.id;
-    const product = await Product.findById(product_id);
-    res.status(200).json(product);
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+// Not needed as I am using redux state to display the product clicked, instead of fetching it from backend
+// const getProductById = async (req, res) => {
+//   try {
+//     const product_id = req.params.id;
+//     const product = await Product.findById(product_id);
+//     res.status(200).json(product);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 
 const createProduct = async (req, res) => {
   if (!req.decodedUser.isAdmin) {
@@ -81,6 +82,9 @@ const updateProduct = async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
+  if(!req.decodedUser.isAdmin){
+    return res.status(401).json("Unauthorized to delete this product")
+  }
   try {
     const product_id = req.params.id;
     await Product.findByIdAndDelete(product_id);
@@ -92,7 +96,7 @@ const deleteProduct = async (req, res) => {
 
 module.exports = {
   getAllProducts,
-  getProductById,
+  // getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
