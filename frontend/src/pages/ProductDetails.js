@@ -14,12 +14,11 @@ const ProductDetails = () => {
       const res = await fetch(`/product/delete/${id}`, {
         method: "DELETE",
       });
-      const data = await res.json()
-      if(res.ok){
+      const data = await res.json();
+      if (res.ok) {
         setLoading(false);
         navigate("/");
-      }
-      else{
+      } else {
         setLoading(false);
         console.log(data);
       }
@@ -87,7 +86,15 @@ const ProductDetails = () => {
                 id="address"
                 className="px-4 py-2 border rounded-lg"
               />
-              <button onClick={(e)=>e.preventDefault()} className="bg-gray-900 hover:bg-gray-700 hover:shadow-md text-white px-5 py-3 rounded-full">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if(currentUser===null){
+                    navigate("/signin");
+                  }
+                }}
+                className="bg-gray-900 hover:bg-gray-700 hover:shadow-md text-white px-5 py-3 rounded-full"
+              >
                 Buy now
               </button>
             </form>

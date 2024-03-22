@@ -51,7 +51,6 @@ const createProduct = async (req, res) => {
 };
 
 const updateProduct = async (req, res) => {
-  console.log(res);
   if (!req.decodedUser.isAdmin) {
     return res.status(401).json("You are not authorized to create a product");
   }
