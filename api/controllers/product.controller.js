@@ -1,8 +1,18 @@
 const { Product } = require("../models/product.js");
 
-const getAllProducts = async (req, res) => {
+const getProducts = async (req, res) => {
   try {
-    const productList = await Product.find();
+    const startIndex = parseInt(req.query.startIndex) || 0;
+    const limit = parseInt(req.query.limit) || 6;
+    const productList = await Product.find({
+      ...(req.query.category && {category:req.query.category}),
+      ...(req.query.searchTerm && {
+        $or: [
+          {title: { $regex : req.query.searchTerm, $options : "i"}},
+          {slug: {$regex : req.query.searchTerm, $options: "i"}}
+        ]
+      })
+    }).skip(startIndex).limit(limit);
     res.status(200).json(productList);
   } catch (error) {
     console.log(error.message);
@@ -46,7 +56,7 @@ const createProduct = async (req, res) => {
     const savedProduct = await newProduct.save();
     return res.status(200).json(savedProduct);
   } catch (error) {
-    return res.json(error.message);
+    return res.status(500).json(error.message);
   }
 };
 
@@ -94,7 +104,7 @@ const deleteProduct = async (req, res) => {
 };
 
 module.exports = {
-  getAllProducts,
+  getProducts,
   // getProductById,
   createProduct,
   updateProduct,

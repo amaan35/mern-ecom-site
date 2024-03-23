@@ -6,13 +6,25 @@ import { signOut } from "../redux/user/userSlice";
 
 export default function Header() {
   const location = useLocation();
+  const [searchTerm, setSearchTerm] = useState("");
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [showProfileMenu, setProfileMenu] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     setProfileMenu(false);
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get("searchTerm");
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
   }, [location.pathname]);
+  const handleSearch = () => {
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set("searchTerm", searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
   return (
     <div className="w-full sticky top-0 z-[1] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-600 sm:min-h-[10vh] h-[7vh] text-gray-200">
       <div className="sm:text-4xl text-xl cursor-pointer w-fit">
@@ -24,10 +36,15 @@ export default function Header() {
       </button>
       <div className="justify-end w-[33%] flex">
         <input
+          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchTerm}
           placeholder="search..."
           className="p-2 w-full text-black sm:inline hidden rounded-tl-lg rounded-bl-lg"
         />
-        <button className="px-3 hover:bg-gray-800 bg-black sm:inline hidden rounded-tr-lg rounded-br-lg text-white">
+        <button
+          onClick={handleSearch}
+          className="px-3 hover:bg-gray-800 bg-black sm:inline hidden rounded-tr-lg rounded-br-lg text-white"
+        >
           search
         </button>
       </div>

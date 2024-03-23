@@ -230,7 +230,7 @@ const UpdateProduct = () => {
           />
         </div>
         <button className="bg-blue-700 hover:bg-blue-600 py-2 rounded-md text-white">
-          Add
+          Update
         </button>
         {showError && <p className="text-red-700 text-center">{showError}</p>}
       </form>

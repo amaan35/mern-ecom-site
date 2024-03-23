@@ -115,7 +115,7 @@ const AddProduct = () => {
           setShowError(data);
         }
       } catch (error) {
-        console.log(error.message);
+        setShowError(error)
       }
     }
   };
