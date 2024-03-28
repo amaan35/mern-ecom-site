@@ -11,9 +11,12 @@ const productSlice = createSlice({
     clickedProduct: (state, action) => {
       state.currentProduct = action.payload;
     },
+    removeClickedProduct : (state)=>{
+      state.currentProduct = null
+    }
   },
 });
 
-export const {clickedProduct} = productSlice.actions
+export const {clickedProduct, removeClickedProduct} = productSlice.actions
 
 export default productSlice.reducer;

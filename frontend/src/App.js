@@ -11,6 +11,7 @@ import AdminUserRoute from "./components/AdminUserRoute";
 import ProductDetails from "./pages/ProductDetails";
 import UpdateProduct from "./pages/UpdateProduct";
 import Search from "./pages/Search";
+import Cart from "./pages/Cart";
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
         <Route path="/:slug" element={<ProductDetails />} />
         <Route path="/search" element={<Search />} />
         <Route element={<AuthUserRoute />}>
+          <Route path="/cart" element={<Cart />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
         <Route element={<AdminUserRoute />}>

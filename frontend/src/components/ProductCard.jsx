@@ -8,34 +8,37 @@ const ProductCard = ({ productInfo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <>
-      <div className="flex flex-col justify-between gap-3 lg:w-[23%] md:w-[30%] w-[40%] p-5 border-2 rounded-lg hover:shadow-xl md:hover:scale-105 cursor-pointer transition-all">
-        <div
+    <div className="flex flex-col justify-between gap-3 w-[300px] p-5 border-2 border-gray-300 rounded-lg hover:shadow-xl md:hover:scale-105 cursor-pointer transition-all">
+      <div
+        onClick={() => {
+          dispatch(clickedProduct(productInfo));
+          navigate(`/${productInfo.slug}`);
+        }}
+      >
+        <div className="flex justify-center">
+          <img
+            src={productInfo.images[0] || productdefaultpic}
+            className="w-[250px] h-[300px] object-cover"
+          />
+        </div>
+        <p className="font-semibold truncate">
+          {productInfo.title}
+        </p>
+        <p className="text-gray-700">category: {productInfo.category}</p>
+        <p className="font-bold">price: Rs {productInfo.price}</p>
+      </div>
+      {currentUser && currentUser.isAdmin && (
+        <button
           onClick={() => {
             dispatch(clickedProduct(productInfo));
-            navigate(`/${productInfo.slug}`);
+            navigate("/updateproduct");
           }}
+          className="bg-blue-500 px-2 py-1 rounded-md hover:bg-blue-600 transition-colors text-white"
         >
-          <img src={productInfo.images[0] || productdefaultpic} />
-          <p className="font-semibold overflow-hidden overflow-ellipsis">
-            {productInfo.title}
-          </p>
-          <p className="text-gray-700">category: {productInfo.category}</p>
-          <p className="font-bold">price: Rs {productInfo.price}</p>
-        </div>
-        {currentUser && currentUser.isAdmin && (
-          <button
-            onClick={() => {
-              dispatch(clickedProduct(productInfo));
-              navigate("/updateproduct");
-            }}
-            className="bg-blue-500 px-2 py-1 rounded-md hover:bg-blue-600 transition-colors text-white"
-          >
-            Update
-          </button>
-        )}
-      </div>
-    </>
+          Update
+        </button>
+      )}
+    </div>
   );
 };
 

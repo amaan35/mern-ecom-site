@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addItem } from "../redux/cart/cartSlice";
 
 const ProductDetails = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
   const { currentUser } = useSelector((state) => state.user);
   const { currentProduct } = useSelector((state) => state.product);
   const [showModal, setShowModal] = useState(false);
@@ -78,6 +81,10 @@ const ProductDetails = () => {
           <p className="text-lg font-mono">Rs {currentProduct.price}</p>
           <p className="text-md font-bold">Stock : {currentProduct.stock}</p>
           <div>
+            <label>Quantity : </label>
+            <input defaultValue={1} type="number" onChange={(e)=>setQuantity(parseInt(e.target.value))} className="w-fit p-1 border rounded-md" />
+          </div>
+          <div>
             <p>Get delivered at :</p>
             <form className="flex flex-col gap-5 mt-3">
               <label>Enter you address : </label>
@@ -87,9 +94,18 @@ const ProductDetails = () => {
                 className="px-4 py-2 border rounded-lg"
               />
               <button
+                className="bg-blue-700 hover:bg-blue-800 hover:shadow-md text-white px-5 py-3 rounded-full"
                 onClick={(e) => {
                   e.preventDefault();
-                  if(currentUser===null){
+                  dispatch(addItem({currentProduct, quantity}));
+                }}
+              >
+                Add to cart
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (currentUser === null) {
                     navigate("/signin");
                   }
                 }}
