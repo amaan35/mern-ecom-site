@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const productRouter = require("./routes/product.route");
 const authRouter = require("./routes/auth.route");
+const orderRouter = require("./routes/order.route");
 const app = express();
 app.use(express.json());
 const port = 3001;
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRouter);
 app.use("/product", productRouter);
+app.use("/order", orderRouter);
 
 app.listen(port, () => {
   console.log(`server started at port : ${port}`);
