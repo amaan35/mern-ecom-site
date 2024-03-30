@@ -51,7 +51,7 @@ const Search = () => {
   };
   return (
     <div className="flex">
-      <div className="border-r-2 border-black p-[3%] min-h-[90vh] min-w-[25vw]">
+      <div className="border-r-2 fixed border-black p-[3%] min-h-[90vh] min-w-[25vw]">
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div>
             <label className="font-semibold text-lg">Search term : </label>
@@ -83,7 +83,7 @@ const Search = () => {
           </button>
         </form>
       </div>
-      <div className="px-[2%] overflow-hidden py-[1%]">
+      <div className="pl-[3vw] ml-[25vw] overflow-hidden py-[1%]">
         <h1 className="text-2xl font-bold pb-[2%]">Products : </h1>
         <div className="flex flex-wrap gap-3">
           {products.length!==0?products.map((product) => {
