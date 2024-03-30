@@ -6,7 +6,7 @@ import { removeItem } from "../redux/cart/cartSlice";
 export default function CartCard({ cartItem }) {
   const dispatch = useDispatch();
   return (
-    <div className="flex justify-between border-2 p-3 rounded-lg shadow-lg w-[60%] h-[200px]">
+    <div className="flex justify-between border-2 p-3 rounded-lg shadow-lg w-full h-[200px]">
       <div className="flex">
         <img
           src={cartItem.currentProduct.images ? cartItem.currentProduct.images[0] : productdefaultpic}

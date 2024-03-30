@@ -4,7 +4,7 @@ import ShirtSlider from "../components/ShirtSlider";
 
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <ShoesSlider/>
       <ShirtSlider/>
     </div>

@@ -69,7 +69,7 @@ export default function Header() {
                 onClick={() => setProfileMenu(!showProfileMenu)}
               />
               <div
-                className={`absolute flex flex-col gap-3 cursor-pointer px-2 py-3 border-2 bg-white text-black rounded-md right-0 ${
+                className={`absolute flex flex-col cursor-pointer px-2 py-3 border-2 bg-white text-black rounded-md right-3 ${
                   showProfileMenu ? "" : "hidden"
                 }`}
               >
@@ -81,9 +81,15 @@ export default function Header() {
                 </div>
                 <div
                   onClick={() => navigate("/profile")}
-                  className="border-b-2 text-lg hover:bg-gray-200 rounded-md"
+                  className="border-b-2 py-2 px-2 text-lg hover:bg-gray-200 rounded-md"
                 >
                   profile
+                </div>
+                <div
+                  onClick={() => navigate("/orders")}
+                  className="border-b-2 py-2 px-2 text-lg hover:bg-gray-200 rounded-md"
+                >
+                  My orders
                 </div>
                 <div
                   onClick={() => {
@@ -92,7 +98,7 @@ export default function Header() {
                     dispatch(signOut());
                     navigate("/signin");
                   }}
-                  className="hover:bg-gray-200 text-lg rounded-md"
+                  className="hover:bg-gray-200 py-2 px-2 text-lg rounded-md"
                 >
                   sign out
                 </div>

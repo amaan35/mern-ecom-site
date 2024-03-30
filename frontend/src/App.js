@@ -12,6 +12,7 @@ import ProductDetails from "./pages/ProductDetails";
 import UpdateProduct from "./pages/UpdateProduct";
 import Search from "./pages/Search";
 import Cart from "./pages/Cart";
+import MyOrders from "./pages/MyOrders";
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function App() {
         <Route element={<AuthUserRoute />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/orders" element={<MyOrders />} />
         </Route>
         <Route element={<AdminUserRoute />}>
           <Route path="/addproduct" element={<AddProduct />} />

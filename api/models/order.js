@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId },
+  address: { type: String, required: true },
   items: [
     {
       quantity: {
