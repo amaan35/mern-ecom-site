@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartCard from "../components/CartCard";
 import { removeAllItems } from "../redux/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   const { items } = useSelector((state) => state.cart);
   const [address, setAddress] = useState("");
   const handleCartOrder = async (e) => {
+    if(!currentUser){
+      return navigate('/signin');
+    }
     e.preventDefault();
     if (!address || address === "") {
       return console.log("Please fill the address");

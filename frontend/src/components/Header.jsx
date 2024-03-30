@@ -8,7 +8,7 @@ import { removeAllItems } from "../redux/cart/cartSlice";
 import { removeClickedProduct } from "../redux/product/productSlice";
 
 export default function Header() {
-  const {items} = useSelector((state) => state.cart);
+  const { items } = useSelector((state) => state.cart);
   const itemsCount = items ? items.length : 0;
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,15 +53,18 @@ export default function Header() {
           search
         </button>
       </div>
-      <div className="flex justify-end">
+      <div className="flex justify-end items-center gap-5">
+        <div
+          className="relative cursor-pointer"
+          onClick={() => navigate("/cart")}
+        >
+          <img src={shoppingcart} width={25} />
+          <span className="absolute -top-4 bg-red-400 rounded-full px-2 -left-3">
+            {itemsCount}
+          </span>
+        </div>
         {currentUser ? (
           <div className="flex items-center gap-4">
-            <div className="relative cursor-pointer" onClick={()=>navigate("/cart")}>
-              <img src={shoppingcart} width={25} />
-              <span className="absolute -top-4 bg-red-400 rounded-full px-2 -left-3">
-                {itemsCount}
-              </span>
-            </div>
             <div>
               <img
                 className="rounded-full cursor-pointer w-[5vh] h-[5vh]"
@@ -94,7 +97,7 @@ export default function Header() {
                 <div
                   onClick={() => {
                     dispatch(removeClickedProduct());
-                    dispatch(removeAllItems())
+                    dispatch(removeAllItems());
                     dispatch(signOut());
                     navigate("/signin");
                   }}
