@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import rightarrow from "../assets/rightarrow.svg";
 
 export default function ShirtSlider() {
   const [shirtList, setShirtList] = useState([]);
+  const sliderRef = useRef(null)
   useEffect(() => {
     const fetchShirt = async () => {
       try {
@@ -25,20 +26,32 @@ export default function ShirtSlider() {
     };
     fetchShirt();
   }, []);
+  const handlePrev = () => {
+    if(sliderRef.current){
+      sliderRef.current.scrollLeft -= 300
+    }
+  }
+  const handleNext = () => {
+    if(sliderRef.current){
+      sliderRef.current.scrollLeft += 300
+    }
+  }
   return (
-    <div className="flex gap-3 py-3">
-      <span className="absolute top-[40%] left-2 rotate-180 bg-gray-400 rounded-full p-2 z-[1] cursor-pointer">
+    <div className="flex items-center">
+      <span onClick={handlePrev} className="rotate-180 left-2 absolute bg-gray-400 rounded-full p-2 z-[1] cursor-pointer">
         <img src={rightarrow} width={25} />
       </span>
-      {shirtList &&
-        shirtList.map((shirt) => {
-          return (
-            <div key={shirt._id}>
-              <ProductCard productInfo={shirt} />
-            </div>
-          );
-        })}
-      <span className="absolute top-[40%] right-2 bg-gray-400 rounded-full p-2 z-[1] cursor-pointer">
+      <div ref={sliderRef} className="flex overflow-x-auto scroll-smooth gap-3 py-3">
+        {shirtList &&
+          shirtList.map((shirt) => {
+            return (
+              <div key={shirt._id}>
+                <ProductCard productInfo={shirt} />
+              </div>
+            );
+          })}
+      </div>
+      <span onClick={handleNext} className="bg-gray-400 absolute right-2 rounded-full p-2 z-[1] cursor-pointer">
         <img src={rightarrow} width={25} />
       </span>
     </div>
