@@ -7,6 +7,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [address, setAddress] = useState("");
+  const [showError, setShowError] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const { currentUser } = useSelector((state) => state.user);
   const { currentProduct } = useSelector((state) => state.product);
@@ -31,9 +32,13 @@ const ProductDetails = () => {
     }
   };
   const handleCreateOrder = async (e) => {
+    setShowError(null);
     e.preventDefault();
     if (currentUser === null) {
       navigate("/signin");
+    }
+    if(!address || address===""){
+      return setShowError("Please enter the address");
     }
     try {
       const res = await fetch('/order/create', {
@@ -132,6 +137,9 @@ const ProductDetails = () => {
                 className="px-4 py-2 border rounded-lg"
                 onChange={(e) => setAddress(e.target.value)}
               />
+              {
+                showError && <p className="text-red-600">{showError}</p>
+              }
               <button
                 className="bg-blue-700 hover:bg-blue-800 hover:shadow-md text-white px-5 py-3 rounded-full"
                 onClick={(e) => {
@@ -154,7 +162,7 @@ const ProductDetails = () => {
               onClick={(e) => {
                 setShowModal(true);
               }}
-              className="bg-red-500 px-2 py-1 rounded-full hover:bg-red-700 transition-colors text-white"
+              className="bg-red-500 px-5 py-3 rounded-full hover:bg-red-700 transition-colors text-white"
             >
               Delete this product
             </button>

@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import rightarrow from "../assets/rightarrow.svg";
 
-export default function ShoesSlider() {
-  const [shoesList, setShoesList] = useState([]);
+export default function TrouserSlider() {
+  const [trouserList, setTrouserList] = useState([]);
   const sliderRef = useRef(null);
   useEffect(() => {
-    const fetchShoes = async () => {
+    const fetchTrouser = async () => {
       try {
-        const res = await fetch("/product/read?category=shoes", {
+        const res = await fetch("/product/read?category=trouser", {
           method: "GET",
           headers: {
             "Content-type": "application/json",
@@ -16,7 +16,7 @@ export default function ShoesSlider() {
         });
         const data = await res.json();
         if (res.ok) {
-          setShoesList(data);
+          setTrouserList(data);
         } else {
           console.log(data);
         }
@@ -24,7 +24,7 @@ export default function ShoesSlider() {
         console.log(error);
       }
     };
-    fetchShoes();
+    fetchTrouser();
   }, []);
   const handleNext = () => {
     if (sliderRef.current) {
@@ -48,11 +48,11 @@ export default function ShoesSlider() {
         ref={sliderRef}
         className="flex overflow-x-auto scroll-smooth gap-3 py-3"
       >
-        {shoesList &&
-          shoesList.map((shoe) => {
+        {trouserList &&
+          trouserList.map((trouser) => {
             return (
-              <div key={shoe._id}>
-                <ProductCard productInfo={shoe} />
+              <div key={trouser._id}>
+                <ProductCard productInfo={trouser} />
               </div>
             );
           })}
