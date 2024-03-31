@@ -8,7 +8,7 @@ const ProductCard = ({ productInfo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col justify-between gap-3 w-[300px] p-5 border-2 border-gray-300 rounded-lg hover:shadow-xl md:hover:scale-105 cursor-pointer transition-all">
+    <div className="flex flex-col justify-between sm:gap-3 w-[48vw] sm:w-[300px] p-5 border-2 border-gray-300 rounded-lg hover:shadow-xl md:hover:scale-105 cursor-pointer transition-all">
       <div
         onClick={() => {
           dispatch(clickedProduct(productInfo));

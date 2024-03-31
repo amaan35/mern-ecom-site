@@ -31,11 +31,11 @@ export default function Header() {
     navigate(`/search?${searchQuery}`);
   };
   return (
-    <div className="w-full sticky top-0 z-[2] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-300 border-b-2 border-gray-400 sm:min-h-[10vh] h-[7vh] text-gray-700">
+    <div className="w-full sticky top-0 z-[2] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-300 border-b-2 border-gray-400 h-[9vh] text-gray-700">
       <div className="sm:text-4xl text-xl cursor-pointer w-fit">
         <h1 onClick={() => navigate("/")}>Ecommerce</h1>
       </div>
-      <button className="sm:hidden hover:bg-gray-300 font-semibold bg-gray-200 px-3 py-1 rounded-md flex items-center text-black gap-1">
+      <button onClick={()=>navigate('/search')} className="sm:hidden hover:bg-gray-400 font-semibold bg-gray-200 px-3 py-1 rounded-md flex items-center text-black gap-1">
         <img src={searchIcon} className="w-[3vw]" />
         search
       </button>

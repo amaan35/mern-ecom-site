@@ -38,7 +38,7 @@ export default function ShirtSlider() {
   }
   return (
     <div className="flex items-center">
-      <span onClick={handlePrev} className="rotate-180 left-2 absolute bg-gray-300 rounded-full p-2 z-[1] cursor-pointer">
+      <span onClick={handlePrev} className="rotate-180 left-2 absolute bg-gray-300 sm:inline hidden rounded-full p-2 z-[1] cursor-pointer">
         <img src={rightarrow} width={25} />
       </span>
       <div ref={sliderRef} className="flex overflow-x-auto scroll-smooth gap-3 py-3">
@@ -51,7 +51,7 @@ export default function ShirtSlider() {
             );
           })}
       </div>
-      <span onClick={handleNext} className="bg-gray-300 absolute right-2 rounded-full p-2 z-[1] cursor-pointer">
+      <span onClick={handleNext} className="bg-gray-300 sm:inline hidden absolute right-2 rounded-full p-2 z-[1] cursor-pointer">
         <img src={rightarrow} width={25} />
       </span>
     </div>

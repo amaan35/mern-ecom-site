@@ -51,7 +51,7 @@ const Search = () => {
   };
   return (
     <div className="flex">
-      <div className="border-r-2 fixed border-black p-[3%] min-h-[90vh] min-w-[25vw]">
+      <div className="border-r-2 fixed hidden md:block border-black p-[3%] min-h-[90vh] min-w-[25vw]">
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div>
             <label className="font-semibold text-lg">Search term : </label>
@@ -83,13 +83,45 @@ const Search = () => {
           </button>
         </form>
       </div>
-      <div className="pl-[3vw] ml-[25vw] overflow-hidden py-[1%]">
+      <div className="md:pl-[3vw] md:ml-[25vw] mb-[24vh] sm:mb-[2vh] overflow-hidden py-[1%]">
         <h1 className="text-2xl font-bold pb-[2%]">Products : </h1>
         <div className="flex flex-wrap gap-3">
           {products.length!==0?products.map((product) => {
             return <ProductCard key={product._id} productInfo={product} />;
           }):<p className="font-semibold text-xl text-gray-800">No products with this filter</p>}
         </div>
+      </div>
+      <div className="border-t-2 border-black bg-white fixed bottom-0 block md:hidden p-[3%] min-h-[20vh] w-screen">
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+          <div>
+            <label className="font-semibold text-lg">Search term : </label>
+            <input
+              placeholder="search..."
+              id="searchTerm"
+              type="text"
+              className="px-3 py-1 border rounded-lg border-gray-500"
+              value={searchData.searchTerm}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className="font-semibold text-lg">Category : </label>
+            <select
+              value={searchData.category}
+              id="category"
+              onChange={handleChange}
+              className="text-lg border border-gray-500 rounded-lg"
+            >
+              <option value="">search a category : </option>
+              <option value="shirt">shirt</option>
+              <option value="shoes">shoes</option>
+              <option value="trouser">trousers</option>
+            </select>
+          </div>
+          <button className="bg-black text-white hover:bg-gray-800 rounded-full px-4 py-2">
+            Apply filters
+          </button>
+        </form>
       </div>
     </div>
   );

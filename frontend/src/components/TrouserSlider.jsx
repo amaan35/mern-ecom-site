@@ -40,7 +40,7 @@ export default function TrouserSlider() {
     <div className="flex items-center">
       <span
         onClick={handlePrev}
-        className="absolute left-2 rotate-180 bg-gray-300 rounded-full p-2 z-[1] cursor-pointer"
+        className="absolute sm:inline hidden left-2 rotate-180 bg-gray-300 rounded-full p-2 z-[1] cursor-pointer"
       >
         <img src={rightarrow} width={25} />
       </span>
@@ -59,7 +59,7 @@ export default function TrouserSlider() {
       </div>
       <span
         onClick={handleNext}
-        className="absolute right-2 bg-gray-300 rounded-full p-2 z-[1] cursor-pointer"
+        className="absolute sm:inline hidden right-2 bg-gray-300 rounded-full p-2 z-[1] cursor-pointer"
       >
         <img src={rightarrow} width={25} />
       </span>

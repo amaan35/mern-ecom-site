@@ -51,7 +51,7 @@ export default function Cart() {
     );
   }
   return (
-    <div className="flex gap-4 px-3 py-4 justify-evenly">
+    <div className="flex sm:flex-row flex-col gap-4 px-3 py-4 justify-evenly">
       <div className="flex flex-col gap-4">
         {items.map((item) => {
           return <CartCard key={item.currentProduct._id} cartItem={item} />;
