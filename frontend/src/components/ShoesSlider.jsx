@@ -37,7 +37,7 @@ export default function ShoesSlider() {
     }
   };
   return (
-    <div className="flex items-center">
+    <div className="flex bg-gray-200 items-center">
       <span
         onClick={handlePrev}
         className="absolute sm:inline hidden left-2 rotate-180 bg-gray-300 rounded-full p-2 z-[1] cursor-pointer"
@@ -46,7 +46,7 @@ export default function ShoesSlider() {
       </span>
       <div
         ref={sliderRef}
-        className="flex overflow-x-auto scroll-smooth gap-3 py-3"
+        className="flex overflow-x-auto scroll-smooth gap-3 py-5"
       >
         {shoesList &&
           shoesList.map((shoe) => {

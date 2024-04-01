@@ -66,11 +66,11 @@ export default function SignIn() {
           </span>
         </p>
         <form
-          className="flex flex-col bg-gray-100 border shadow-md gap-5 p-5"
+          className="flex flex-col bg-gradient-to-r from-cyan-600 to-blue-600 text-white border shadow-md gap-5 p-5"
           onSubmit={handleSubmit}
         >
           <div className="flex justify-between items-center">
-            <label>Enter your username :</label>
+            <label>Enter your username : </label>
             <input
               placeholder="username"
               id="username"
@@ -90,7 +90,7 @@ export default function SignIn() {
             />
           </div>
           <button
-            className={`bg-blue-800 text-white rounded-md px-3 py-1 ${
+            className={`bg-yellow-400 hover:bg-yellow-500 text-black rounded-md px-3 py-1 ${
               loading ? "opacity-50" : ""
             }`}
             type="submit"
@@ -100,7 +100,7 @@ export default function SignIn() {
           </button>
           <OAuth/>
           {showError && (
-            <span className="text-red-500 text-center">{showError}</span>
+            <span className="text-white text-center">{showError}</span>
           )}
         </form>
       </div>

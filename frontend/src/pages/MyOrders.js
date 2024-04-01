@@ -6,7 +6,6 @@ export default function MyOrders() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [orderDetail, setOrderDetail] = useState(null);
   const [showOrderIDs, setShowOrderIDs] =useState(false);
-  console.log(orderDetail);
   useEffect(() => {
     const fetchOrders = async () => {
       try {

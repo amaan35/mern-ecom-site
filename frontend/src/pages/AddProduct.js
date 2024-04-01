@@ -125,7 +125,7 @@ const AddProduct = () => {
       <h2 className="font-bold text-3xl">Add a product</h2>
       <form
         onSubmit={handleSubmit}
-        className="border-2 bg-gray-100 p-10 flex flex-col gap-4 shadow-md rounded-lg"
+        className="border-2 bg-gradient-to-r from-cyan-400 to-blue-400 p-10 flex flex-col gap-4 shadow-md rounded-lg"
       >
         <div className="flex items-center gap-2">
           <label className="font-semibold">Title : </label>
@@ -159,7 +159,7 @@ const AddProduct = () => {
             the first 4 will be uploaded
           </span>
           <button
-            className="bg-blue-700 hover:bg-blue-600 rounded-md text-white px-3 py-2 h-fit"
+            className="bg-yellow-400 hover:bg-yellow-500 rounded-md text-black px-3 py-2 h-fit"
             onClick={handleImageUpload}
           >
             Upload images
@@ -209,7 +209,7 @@ const AddProduct = () => {
             type="number"
           />
         </div>
-        <button className="bg-blue-700 hover:bg-blue-600 py-2 rounded-md text-white">
+        <button className="bg-yellow-400 hover:bg-yellow-500 py-2 rounded-md text-black">
           Add
         </button>
         {showError && <p className="text-red-700 text-center">{showError}</p>}

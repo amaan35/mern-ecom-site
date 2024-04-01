@@ -141,7 +141,7 @@ const ProductDetails = () => {
                 showError && <p className="text-red-600">{showError}</p>
               }
               <button
-                className="bg-blue-700 hover:bg-blue-800 hover:shadow-md text-white px-5 py-3 rounded-full"
+                className="bg-yellow-400 hover:bg-yellow-500 hover:shadow-md text-black px-5 py-3 rounded-full"
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(addItem({ currentProduct, quantity }));

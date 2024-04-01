@@ -51,7 +51,7 @@ const Search = () => {
   };
   return (
     <div className="flex">
-      <div className="border-r-2 fixed hidden md:block border-black p-[3%] min-h-[90vh] min-w-[25vw]">
+      <div className="border-r-2 fixed hidden md:block bg-gray-100 border-gray-200 p-[3%] min-h-[90vh] min-w-[25vw]">
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div>
             <label className="font-semibold text-lg">Search term : </label>
@@ -78,7 +78,7 @@ const Search = () => {
               <option value="trouser">trousers</option>
             </select>
           </div>
-          <button className="bg-black text-white hover:bg-gray-800 rounded-full px-4 py-2">
+          <button className="bg-gradient-to-r text-white from-cyan-400 to-blue-500 hover:opacity-75 rounded-full px-4 py-2">
             Apply filters
           </button>
         </form>
@@ -91,7 +91,7 @@ const Search = () => {
           }):<p className="font-semibold text-xl text-gray-800">No products with this filter</p>}
         </div>
       </div>
-      <div className="border-t-2 border-black bg-white fixed bottom-0 block md:hidden p-[3%] min-h-[20vh] w-screen">
+      <div className="border-t-2 border-gray-700 bg-gray-100 fixed bottom-0 block md:hidden p-[3%] min-h-[20vh] w-screen">
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div>
             <label className="font-semibold text-lg">Search term : </label>
@@ -118,7 +118,7 @@ const Search = () => {
               <option value="trouser">trousers</option>
             </select>
           </div>
-          <button className="bg-black text-white hover:bg-gray-800 rounded-full px-4 py-2">
+          <button className="bg-gradient-to-r text-white from-cyan-400 to-blue-500 hover:opacity-75 rounded-full px-4 py-2">
             Apply filters
           </button>
         </form>

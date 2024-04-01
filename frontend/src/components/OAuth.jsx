@@ -17,7 +17,7 @@ const OAuth = () => {
     });
     try {
       const accountResults = await signInWithPopup(auth, provider);
-      const res = await fetch("http://localhost:3001/auth/google", {
+      const res = await fetch("/auth/google", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -40,7 +40,7 @@ const OAuth = () => {
   return (
     <>
       <button
-        className="border-2 border-gray-500 hover:bg-gray-200 text-black flex items-center justify-center gap-2 py-3 rounded-lg font-semibold"
+        className="border-2 border-yellow-400 bg-gradient-to-r from-green-400 to-blue-400 hover:opacity-85 text-black flex items-center justify-center gap-2 py-3 rounded-lg font-semibold"
         type="button"
         onClick={handleGoogleAuth}
       >

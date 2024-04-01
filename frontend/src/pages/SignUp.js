@@ -68,7 +68,7 @@ export default function SignUp() {
           </span>
         </p>
         <form
-          className="flex flex-col bg-gray-100 w-[90%] lg:w-[90%] md:w-[70%] border shadow-lg gap-5 p-6"
+          className="flex flex-col bg-gradient-to-r from-cyan-600 to-blue-600 text-white w-[90%] lg:w-[90%] md:w-[70%] border shadow-lg gap-5 p-6"
           onSubmit={handleSubmit}
         >
           <label>Enter your email : </label>
@@ -96,7 +96,7 @@ export default function SignUp() {
             onChange={handleChange}
           />
           <button
-            className={`bg-blue-800 text-white rounded-md px-3 py-1 ${
+            className={`bg-yellow-400 hover:bg-yellow-500 text-black rounded-md px-3 py-1 ${
               loading ? "opacity-50" : ""
             }`}
             type="submit"
@@ -106,7 +106,7 @@ export default function SignUp() {
           </button>
           <OAuth/>
           {showError && (
-            <span className="text-red-500 text-center">{showError}</span>
+            <span className="text-white text-center">{showError}</span>
           )}
         </form>
       </div>

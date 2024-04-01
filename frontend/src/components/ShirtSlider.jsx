@@ -37,11 +37,11 @@ export default function ShirtSlider() {
     }
   }
   return (
-    <div className="flex items-center">
+    <div className="flex  bg-gray-200 items-center">
       <span onClick={handlePrev} className="rotate-180 left-2 absolute bg-gray-300 sm:inline hidden rounded-full p-2 z-[1] cursor-pointer">
         <img src={rightarrow} width={25} />
       </span>
-      <div ref={sliderRef} className="flex overflow-x-auto scroll-smooth gap-3 py-3">
+      <div ref={sliderRef} className="flex overflow-x-auto scroll-smooth gap-3 py-5">
         {shirtList &&
           shirtList.map((shirt) => {
             return (

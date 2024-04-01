@@ -69,7 +69,7 @@ export default function Cart() {
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
-          <button className="bg-black hover:bg-gray-800 text-white rounded-full px-3 py-2">
+          <button className="bg-black hover:bg-gray-700 text-white rounded-full px-3 py-2">
             Place order
           </button>
         </form>

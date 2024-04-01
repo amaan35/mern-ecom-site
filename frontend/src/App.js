@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import SignUp from "./pages/SignUp";
@@ -13,7 +13,21 @@ import UpdateProduct from "./pages/UpdateProduct";
 import Search from "./pages/Search";
 import Cart from "./pages/Cart";
 import MyOrders from "./pages/MyOrders";
+import { useDispatch } from "react-redux";
+import { signOut } from "./redux/user/userSlice";
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      dispatch(signOut());
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <Header />

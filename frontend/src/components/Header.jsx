@@ -31,11 +31,11 @@ export default function Header() {
     navigate(`/search?${searchQuery}`);
   };
   return (
-    <div className="w-full sticky top-0 z-[2] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gray-300 border-b-2 border-gray-400 h-[9vh] text-gray-700">
-      <div className="sm:text-4xl text-xl cursor-pointer w-fit">
-        <h1 onClick={() => navigate("/")}>Ecommerce</h1>
+    <div className="w-full sticky top-0 z-[2] sm:px-[3vw] px-[2vw] flex items-center justify-between bg-gradient-to-r from-cyan-500 to-blue-500 h-[9vh] text-black">
+      <div className="sm:text-4xl bg-gradient-to-r from-gray-400 from-40% to-gray-500 px-3 py-2 rounded-xl text-xl cursor-pointer w-fit">
+        <h1 className="text-white" onClick={() => navigate("/")}>Ecommerce</h1>
       </div>
-      <button onClick={()=>navigate('/search')} className="sm:hidden hover:bg-gray-400 font-semibold bg-gray-200 px-3 py-1 rounded-md flex items-center text-black gap-1">
+      <button onClick={()=>navigate('/search')} className="sm:hidden bg-yellow-400 font-semibold hover:bg-yellow-500 px-3 py-1 rounded-md flex items-center text-black gap-1">
         <img src={searchIcon} className="w-[3vw]" />
         search
       </button>
@@ -48,7 +48,7 @@ export default function Header() {
         />
         <button
           onClick={handleSearch}
-          className="px-3 hover:bg-gray-800 bg-black sm:inline hidden rounded-tr-lg rounded-br-lg text-white"
+          className="px-3 bg-yellow-400 hover:bg-yellow-500 sm:inline hidden rounded-tr-lg rounded-br-lg text-gray-800"
         >
           search
         </button>
@@ -59,7 +59,7 @@ export default function Header() {
           onClick={() => navigate("/cart")}
         >
           <img src={shoppingcart} width={25} />
-          <span className="absolute -top-4 bg-red-400 rounded-full px-2 -left-3">
+          <span className="absolute -top-4 bg-yellow-400 rounded-full px-2 -left-3">
             {itemsCount}
           </span>
         </div>
@@ -110,7 +110,7 @@ export default function Header() {
           </div>
         ) : (
           <button
-            className="bg-gray-500 text-white hover:bg-gray-800 px-4 sm:py-2 py-1 cursor-pointer rounded-sm text-nowrap"
+            className="bg-yellow-400 text-gray-800 hover:bg-yellow-500 px-4 sm:py-2 py-1 cursor-pointer rounded-sm text-nowrap"
             onClick={() => navigate("/signin")}
           >
             Sign In

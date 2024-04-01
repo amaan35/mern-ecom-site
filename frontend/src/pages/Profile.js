@@ -8,7 +8,7 @@ const Profile = () => {
   return (
     <div className="flex flex-col justify-center gap-5 items-center min-h-[90vh]">
       <h2 className="text-3xl font-bold">Profile</h2>
-      <div className="flex flex-col items-center border-2 shadow-md rounded-lg gap-4 py-16 px-28">
+      <div className="flex flex-col bg-gradient-to-r from-cyan-400 to-blue-400 items-center border-2 shadow-md rounded-lg gap-4 py-16 px-28">
         <img
           src={
             currentUser.profilePic

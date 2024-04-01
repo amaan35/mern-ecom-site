@@ -134,13 +134,13 @@ const UpdateProduct = () => {
       <h2 className="font-bold text-3xl">Update a product</h2>
       <form
         onSubmit={handleSubmit}
-        className="border-2 bg-gray-100 p-10 flex flex-col gap-4 shadow-md rounded-lg"
+        className="border-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-10 flex flex-col gap-4 shadow-md rounded-lg"
       >
         <div className="flex items-center gap-2">
           <label className="font-semibold">Update Title : </label>
           <input
             onChange={handleChange}
-            className="px-3 flex-grow py-2 border-black rounded-md border"
+            className="px-3 flex-grow py-2 border-black text-black rounded-md border"
             placeholder="product title..."
             id="title"
             type="text"
@@ -159,7 +159,7 @@ const UpdateProduct = () => {
               multiple
             />
             {!uploadCheck && (
-              <span className="text-blue-700">
+              <span className="text-white">
                 {" "}
                 update images : choose and upload
               </span>
@@ -170,12 +170,12 @@ const UpdateProduct = () => {
           )}
         </div>
         <div className="flex items-center justify-between">
-          <span className="font-semibold text-blue-700 w-2/3 flex-wrap">
+          <span className="font-semibold text-white w-2/3 flex-wrap">
             Max 4 images are allowed : if more than 4 images are selected, only
             the first 4 will be uploaded
           </span>
           <button
-            className="bg-blue-700 hover:bg-blue-600 rounded-md text-white px-3 py-2 h-fit"
+            className="bg-yellow-400 hover:bg-yellow-500 rounded-md text-black px-3 py-2 h-fit"
             onClick={handleImageUpload}
           >
             Upload images
@@ -184,7 +184,7 @@ const UpdateProduct = () => {
         <div>
           <label className="font-semibold">Update Category : </label>
           <select
-            className="border rounded-lg px-3 py-2 border-black"
+            className="border rounded-lg px-3 py-2 text-black border-black"
             onChange={(e) =>
               setFormdata({ ...formdata, category: e.target.value })
             }
@@ -200,7 +200,7 @@ const UpdateProduct = () => {
           <label className="font-semibold">Update Brand : </label>
           <input
             onChange={handleChange}
-            className="px-3 flex-grow py-2 border-black rounded-md border"
+            className="px-3 flex-grow py-2 border-black text-black rounded-md border"
             placeholder="product brand..."
             id="brand"
             type="text"
@@ -211,7 +211,7 @@ const UpdateProduct = () => {
           <label className="font-semibold">Update Price : </label>
           <input
             onChange={handleChange}
-            className="px-3 flex-grow py-2 border-black rounded-md border"
+            className="px-3 flex-grow py-2 text-black border-black rounded-md border"
             placeholder="product price..."
             id="price"
             type="number"
@@ -222,17 +222,17 @@ const UpdateProduct = () => {
           <label className="font-semibold">Update Stock : </label>
           <input
             onChange={handleChange}
-            className="px-3 flex-grow py-2 border-black rounded-md border"
+            className="px-3 flex-grow py-2 border-black text-black rounded-md border"
             placeholder="product stock..."
             id="stock"
             type="number"
             value={formdata.stock}
           />
         </div>
-        <button className="bg-blue-700 hover:bg-blue-600 py-2 rounded-md text-white">
+        <button className="bg-yellow-400 hover:bg-yellow-500 py-2 rounded-md text-black">
           Update
         </button>
-        {showError && <p className="text-red-700 text-center">{showError}</p>}
+        {showError && <p className="text-white text-center">{showError}</p>}
       </form>
     </div>
   );
