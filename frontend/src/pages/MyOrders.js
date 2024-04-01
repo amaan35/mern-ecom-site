@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import navigationdrawer from "../assets/navigationdrawer.svg";
 
 export default function MyOrders() {
   const [orders, setOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [orderDetail, setOrderDetail] = useState(null);
+  const [showOrderIDs, setShowOrderIDs] =useState(false);
   console.log(orderDetail);
   useEffect(() => {
     const fetchOrders = async () => {
@@ -28,8 +30,8 @@ export default function MyOrders() {
     setOrderDetail(order);
   }, [selectedOrder]);
   return (
-    <div className="flex p-3 gap-5">
-      <div className="space-y-4 border-r-2 h-[80vh] pr-3">
+    <div className="flex sm:gap-5">
+      <div className={`space-y-4 fixed left-10 ${showOrderIDs?'block':'hidden'} sm:block p-3 bg-white sm:static border-r-2 h-[90vh]`}>
         <p className="text-2xl font-semibold">Order ID : </p>
         <div className="space-y-1">
           {orders.map((order) => {
@@ -47,22 +49,25 @@ export default function MyOrders() {
           })}
         </div>
       </div>
-      <div className="flex-grow">
-        <p className="text-2xl font-semibold">Order details : </p>
+      <div className="sm:hidden p-3 cursor-pointer" onClick={()=>setShowOrderIDs(!showOrderIDs)}>
+        <img src={navigationdrawer} width={30}/>
+      </div>
+      <div className="flex-grow p-3">
+        <p className="text-2xl font-semibold pl-[10vw] sm:pl-0">Order details : </p>
         {orderDetail && (
           <div className="space-y-3">
-            <p>Address : {orderDetail.address}</p>
+            <p className="pl-[10vw] sm:pl-0">Address : {orderDetail.address}</p>
             {orderDetail.items.map((product) => {
               return (
-                <div className="border-2 rounded-lg p-3 w-[80%] shadow-md">
+                <div className="border-2 rounded-lg p-3 w-[80%] m-auto shadow-md">
                   <div className="flex gap-4">
                     <img src={product.item.images[0]} width={200} />
                     <div className="gap-2">
-                      <p>{product.item.title}</p>
-                      <p>Brand : {product.item.brand}</p>
-                      <p>Category : {product.item.category}</p>
-                      <p>Price : {product.item.price}</p>
-                      <p>Quantity : {product.quantity}</p>
+                      <p className="text-lg font-semibold">{product.item.title}</p>
+                      <p className="text-sm font-bold">{product.item.brand}</p>
+                      <p className="text-xs">{product.item.category}</p>
+                      <p className="text-sm">Price : {product.item.price}</p>
+                      <p className="text-sm">Quantity : {product.quantity}</p>
                     </div>
                   </div>
                 </div>
