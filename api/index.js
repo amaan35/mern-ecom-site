@@ -7,6 +7,7 @@ const orderRouter = require("./routes/order.route");
 const app = express();
 app.use(express.json());
 const port = 3001;
+const path = require("path");
 
 dotenv.config();
 
@@ -19,13 +20,17 @@ mongoose
     console.log("error connecting to database : ", error);
   });
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+const __dirname = path.resolve();
 
 app.use("/auth", authRouter);
 app.use("/product", productRouter);
 app.use("/order", orderRouter);
+
+app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});
 
 app.listen(port, () => {
   console.log(`server started at port : ${port}`);
