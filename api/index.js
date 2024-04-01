@@ -20,16 +20,16 @@ mongoose
     console.log("error connecting to database : ", error);
   });
 
-const __dirname = path.resolve();
+const _dirname = path.resolve();
 
 app.use("/auth", authRouter);
 app.use("/product", productRouter);
 app.use("/order", orderRouter);
 
-app.use(express.static(path.join(__dirname, "/frontend/build")));
+app.use(express.static(path.join(_dirname, "/frontend/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  res.sendFile(path.join(_dirname, "frontend", "build", "index.html"));
 });
 
 app.listen(port, () => {
